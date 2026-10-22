@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pen</title>
+  </head>
+  <body>
+    <!-- Noto Sans KR 폰트 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 현재 화면 상태 알림 바 (창 크기를 조절해 보세요) -->
+    <div class="status-bar">
+      💻 현재 데스크탑 화면입니다 (769px 이상) - 창 너비를 줄여보세요!
+    </div>
+
+    <!-- 1. 미디어 쿼리가 필요 없는 경우 (Grid Auto-fit) -->
+    <div class="box">
+      <h3 class="title">1. 미디어 쿼리가 필요 없는 반응형 (Grid auto-fit)</h3>
+      <p class="desc">
+        단순히 열(Column)의 개수만 줄어드는 카드 목록은 미디어 쿼리를 쓰지
+        않습니다. 최소 너비(160px)만 지정하면 스스로 공간을 계산해 줄바꿈합니다.
+      </p>
+
+      <div class="auto-grid">
+        <div class="grid-card">카드 1</div>
+        <div class="grid-card">카드 2</div>
+        <div class="grid-card">카드 3</div>
+        <div class="grid-card">카드 4</div>
+      </div>
+    </div>
+
+    <!-- 2. 미디어 쿼리 필수 1: 요소 숨김 및 노출 (GNB 네비게이션) -->
+    <div class="box">
+      <h3 class="title">2. 요소의 노출/숨김 전환 (GNB 메뉴 ↔ 햄버거 버튼)</h3>
+      <p class="desc">
+        공간이 좁아졌을 때 기존 요소를 아예 숨기고(display: none) 새로운 모바일
+        전용 요소를 꺼내는 작업은 미디어 쿼리로만 가능합니다.
+      </p>
+
+      <header class="mq-gnb">
+        <div class="logo">LOGO</div>
+        <ul class="pc-menu">
+          <li>서비스 소개</li>
+          <li>요금 안내</li>
+          <li>고객 센터</li>
+          <li>로그인</li>
+        </ul>
+        <button class="mobile-menu-btn">☰ 메뉴</button>
+      </header>
+    </div>
+
+    <!-- 3. 미디어 쿼리 필수 2: 배치 축(방향)의 전환 (가로형 배너 → 세로형 카드) -->
+    <div class="box">
+      <h3 class="title">
+        3. 컴포넌트 배치 축 전환 (flex-direction: row → column)
+      </h3>
+      <p class="desc">
+        데스크탑에서는 이미지와 글이 좌우(가로)로 배치되다가, 모바일에서는
+        위아래(세로)로 쌓이도록 축을 꺾어줍니다.
+      </p>
+
+      <article class="promo-card">
+        <img
+          src="https://images.unsplash.com/photo-1791973649016-541e9784d792?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+          alt="프로모션 썸네일"
+          class="promo-img"
+        />
+        <div class="promo-content">
+          <h4 class="promo-heading">반응형 웹 디자인 마스터 클래스</h4>
+          <p class="promo-text">
+            화면 크기에 따라 레이아웃의 축이 가로에서 세로로 전환되며,
+            모바일에서는 텍스트와 버튼이 중앙 정렬로 바뀝니다.
+          </p>
+          <button class="btn">수강 신청하기</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- 4. 미디어 쿼리 필수 3: 다단 골조 해체 및 타이포그래피/여백 축소 -->
+    <div class="box">
+      <h3 class="title">4. 전체 레이아웃 해체 및 폰트/여백 축소</h3>
+      <p class="desc">
+        데스크탑의 2단 그리드(사이드바+본문)를 모바일에서는 1단으로 해체하고,
+        좁은 화면에 맞춰 제목 크기와 박스 안쪽 여백(padding)을 줄입니다.
+      </p>
+
+      <div class="mq-layout">
+        <aside class="mq-sidebar">좌측 사이드바 메뉴</aside>
+        <main class="mq-main">
+          <h2 class="mq-hero-title">모바일에서는 이 제목 크기가 작아집니다</h2>
+          <p>
+            본문 영역의 안쪽 여백(padding)도 모바일에서는 더 좁게 조정되어 화면
+            공간 효율을 높입니다.
+          </p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

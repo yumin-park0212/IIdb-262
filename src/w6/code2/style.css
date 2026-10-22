@@ -1,0 +1,222 @@
+/* =========================================
+   공통 세팅 및 재활용 스타일
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  padding: 24px;
+  background-color: #f5f6f8;
+}
+
+.box {
+  background-color: #fff;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  background-color: #f1f3f5;
+  padding: 12px;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+.btn {
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 화면 크기 감지용 상단 상태 바 */
+.status-bar {
+  background-color: #2b8a3e;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+  transition: background-color 0.3s;
+}
+
+/* =========================================
+   1. 미디어 쿼리가 필요 없는 경우 (Auto-fit)
+   ========================================= */
+.auto-grid {
+  display: grid;
+  /* 미디어 쿼리 없이도 최소 160px을 유지하며 알아서 열 개수를 조절함 */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.grid-card {
+  background-color: #e3e8fc;
+  color: #3b5bdb;
+  padding: 24px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* =========================================
+   2. GNB 메뉴 노출/숨김 전환 (기본: 데스크탑)
+   ========================================= */
+.mq-gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212529;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 6px;
+}
+
+.mq-gnb .logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffc107;
+}
+
+.pc-menu {
+  display: flex; /* 데스크탑에서는 가로 메뉴 노출 */
+  gap: 24px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.mobile-menu-btn {
+  display: none; /* 데스크탑에서는 햄버거 버튼 숨김 */
+  background-color: #495057;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* =========================================
+   3. 컴포넌트 배치 축 전환 (기본: 가로 배치)
+   ========================================= */
+.promo-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.promo-img {
+  width: 220px;
+  height: 150px;
+  background-color: #ced4da;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0; /* 데스크탑에서 이미지가 찌그러지지 않게 방어 */
+}
+
+.promo-heading {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.promo-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   4. 전체 골조 및 타이포그래피 (기본: 2단 그리드)
+   ========================================= */
+.mq-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* 좌측 사이드바 200px, 우측 본문 1fr */
+  gap: 20px;
+}
+
+.mq-sidebar {
+  background-color: #e9ecef;
+  padding: 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  color: #495057;
+}
+
+.mq-main {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 40px; /* 데스크탑의 넉넉한 여백 */
+  border-radius: 6px;
+}
+
+.mq-hero-title {
+  font-size: 32px; /* 데스크탑의 거대한 타이틀 */
+  margin-bottom: 12px;
+  color: #212529;
+}
+
+/* =======================================================
+   📱 [미디어 쿼리 구간] 화면 너비가 768px 이하일 때 덮어쓰기
+   ======================================================= */
+@media (max-width: 768px) {
+  /* 상단 상태 바 색상 변경 */
+  .status-bar {
+    background-color: #e03131;
+  }
+  .status-bar::after {
+    content: " ➔ 📱 모바일 뷰 (768px 이하) 작동 중!";
+  }
+
+  /* 2번 예제: PC 메뉴를 숨기고 모바일 햄버거 버튼을 꺼냄 */
+  .pc-menu {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  /* 3번 예제: 가로(row) 카드를 세로(column)로 꺾고 내부를 중앙 정렬 */
+  .promo-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .promo-img {
+    width: 100%; /* 모바일에서는 이미지가 가로를 꽉 채우도록 변경 */
+    height: 180px;
+  }
+  .promo-card .btn {
+    width: 100%; /* 모바일에서는 손가락으로 누르기 쉽게 버튼을 꽉 채움 */
+  }
+
+  /* 4번 예제: 2단 그리드를 1단으로 해체하고 여백/폰트 축소 */
+  .mq-layout {
+    grid-template-columns: 1fr; /* 1열(수직 나열)로 변경 */
+  }
+  .mq-main {
+    padding: 20px; /* 여백을 40px -> 20px로 절반 축소 */
+  }
+  .mq-hero-title {
+    font-size: 20px; /* 타이틀 크기를 32px -> 20px로 축소 */
+  }
+}

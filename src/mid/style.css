@@ -1,0 +1,188 @@
+/* =========================================
+   2. 미디어 쿼리 (Media Query) 파트
+   ========================================= */
+
+/* 상태 바 기본 스타일 (데스크탑) */
+.status-banner-box {
+  background-color: #2b8a3e !important;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+
+  .status-indicator {
+    font-size: 0.95rem;
+  }
+}
+
+/* 2-1. GNB 네비게이션 */
+.mq-gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212529;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 0.375rem;
+
+  .logo {
+    font-weight: 900;
+    font-size: 1.125rem;
+    color: #fcc419;
+  }
+
+  .pc-menu {
+    display: flex; /* 데스크탑에서는 가로 나열 */
+    gap: 1.5rem;
+    list-style: none;
+    font-size: 0.9rem;
+  }
+
+  .mobile-menu-btn {
+    display: none; /* 데스크탑에서는 숨김 */
+    background-color: #495057;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+}
+
+/* 2-2. 프로모션 카드 (가로 배치) */
+.promo-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #dee2e6;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+
+  .promo-img-placeholder {
+    width: 14rem;
+    height: 10rem;
+    background-color: #ced4da;
+    border-radius: 0.375rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #495057;
+  }
+
+  .promo-content {
+    .promo-heading {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #212529;
+    }
+
+    .promo-text {
+      font-size: 0.9rem;
+      color: #495057;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background-color: #007aff;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.375rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
+
+/* 2-3. 전체 골조 및 타이포그래피 (2단 그리드) */
+.mq-layout {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 1.25rem;
+
+  .mq-sidebar {
+    background-color: #e9ecef;
+    padding: 1.25rem;
+    border-radius: 0.375rem;
+    font-weight: 700;
+    color: #495057;
+  }
+
+  .mq-main {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 2.5rem; /* 데스크탑의 넉넉한 여백 */
+    border-radius: 0.375rem;
+
+    .mq-hero-title {
+      font-size: 2rem; /* 데스크탑의 큰 타이틀 */
+      margin-bottom: 0.75rem;
+      color: #212529;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #495057;
+      line-height: 1.5;
+    }
+  }
+}
+
+/* =======================================================
+   📱 [미디어 쿼리 구간] 화면 너비가 768px 이하일 때 분기
+   ======================================================= */
+@media (max-width: 768px) {
+  /* 상태 바 변경 */
+  .status-banner-box {
+    background-color: #e03131 !important;
+
+    .status-indicator::after {
+      content: " ➔ 📱 모바일 뷰 (768px 이하) 작동 중!";
+    }
+  }
+
+  /* 2-1. GNB: PC 메뉴 숨기고 햄버거 노출 */
+  .mq-gnb {
+    .pc-menu {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: block;
+    }
+  }
+
+  /* 2-2. 프로모션 카드: 가로(row)를 세로(column)로 꺾고 중앙 정렬 */
+  .promo-card {
+    flex-direction: column;
+    text-align: center;
+
+    .promo-img-placeholder {
+      width: 100%;
+      height: 11rem;
+    }
+
+    .promo-content {
+      .btn-primary {
+        width: 100%; /* 모바일에서는 누르기 쉽게 꽉 채움 */
+      }
+    }
+  }
+
+  /* 2-3. 레이아웃 골조 해체 및 타이포그래피/여백 축소 */
+  .mq-layout {
+    grid-template-columns: 1fr; /* 2단에서 1단으로 해체 */
+  }
+
+  .mq-main {
+    padding: 1.25rem !important; /* 여백 축소 */
+
+    .mq-hero-title {
+      font-size: 1.25rem !important; /* 타이틀 폰트 크기 축소 */
+    }
+  }
+}

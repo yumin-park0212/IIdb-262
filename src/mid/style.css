@@ -221,7 +221,6 @@ footer img {
     padding: 1rem;
 
     grid-template-columns: 1fr 0.5rem 1fr;
-    /* 로고 | 간격 | 앨범 정보 */
     grid-template-rows: auto 3rem auto 1fr auto;
     /* 1행: 상단 | 2행: 검정 막대 | 3행: 트랙 | 4행: 남는 공간 | 5행: 하단 */
   }

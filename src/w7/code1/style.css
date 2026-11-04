@@ -4,14 +4,23 @@
 
 /* 상태 바 기본 스타일 (데스크탑) */
 .status-banner-box {
-  background-color: #2b8a3e !important;
+  background-color: #2b8a3e;
   color: #fff;
   text-align: center;
   font-weight: 700;
   transition: background-color 0.3s ease;
 
+  @media (width < 48rem) {
+    background-color: red;
+  }
   .status-indicator {
     font-size: 0.95rem;
+
+    &::after {
+      @media (width < 48rem) {
+        content: "이미 추가된 텍스트입니다.";
+      }
+    }
   }
 }
 
@@ -36,6 +45,10 @@
     gap: 1.5rem;
     list-style: none;
     font-size: 0.9rem;
+
+    @media (width <48rem) {
+      display: none;
+    }
   }
 
   .mobile-menu-btn {
@@ -47,6 +60,10 @@
     border-radius: 0.25rem;
     font-size: 0.85rem;
     cursor: pointer;
+
+    @media (width <48rem) {
+      display: block;
+    }
   }
 }
 
@@ -137,24 +154,7 @@
    📱 [미디어 쿼리 구간] 화면 너비가 768px 이하일 때 분기
    ======================================================= */
 @media (max-width: 768px) {
-  /* 상태 바 변경 */
-  .status-banner-box {
-    background-color: #e03131 !important;
-
-    .status-indicator::after {
-      content: " ➔ 📱 모바일 뷰 (768px 이하) 작동 중!";
-    }
-  }
-
   /* 2-1. GNB: PC 메뉴 숨기고 햄버거 노출 */
-  .mq-gnb {
-    .pc-menu {
-      display: none;
-    }
-    .mobile-menu-btn {
-      display: block;
-    }
-  }
 
   /* 2-2. 프로모션 카드: 가로(row)를 세로(column)로 꺾고 중앙 정렬 */
   .promo-card {

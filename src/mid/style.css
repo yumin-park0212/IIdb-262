@@ -85,7 +85,7 @@ h2 {
   background-color: #000;
 }
 
-/* 트랙 목록 : 3열 × 2행 */
+/* 트랙 목록 : 2열 × 3행 */
 .tracklist {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -141,8 +141,6 @@ footer img {
 /* 태블릿 */
 @media (max-width: 1024px) and (orientation: portrait) {
   .poster {
-    --w: 50rem;
-    --h: 66.67rem;
     aspect-ratio: 768 / 1024;
     background: #fff url(./img/deco-bg2.svg) center bottom / 100% auto no-repeat;
     /* 그리드 설정 */
@@ -215,8 +213,6 @@ footer img {
 /* 모바일 */
 @media (max-width: 640px) and (max-aspect-ratio: 3 / 5) {
   .poster {
-    --w: 24.375rem;
-    --h: 52rem;
     aspect-ratio: 390 / 832;
     background: #fff;
     padding: 1rem;
